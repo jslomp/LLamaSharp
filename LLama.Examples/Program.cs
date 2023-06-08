@@ -19,15 +19,26 @@ while (true)
 
     if (choice == 0)
     {
-        Console.Write("Please input your model path: ");
-        var modelPath = Console.ReadLine();
+        // added by Jacob Slomp
+        // file exists instead of crash
+        string modelPath = string.Empty;
+        while(modelPath == string.Empty || !File.Exists(modelPath)) {
+            Console.Write("Please input your model path: ");
+            modelPath = Console.ReadLine();
+        }
         ChatSession chat = new(modelPath, "Assets/chat-with-bob.txt", new string[] { "User:" });
         chat.Run();
     }
     else if (choice == 1)
     {
-        Console.Write("Please input your model path: ");
-        var modelPath = Console.ReadLine();
+        // added by Jacob Slomp
+        // file exists instead of crash
+        
+        string modelPath = string.Empty;
+        while(modelPath == string.Empty || !File.Exists(modelPath)) {
+            Console.Write("Please input your model path: ");
+            modelPath = Console.ReadLine();
+        }
         ChatWithLLamaModel chat = new(modelPath, "Assets/chat-with-bob.txt", new string[] { "User:" });
         chat.Run();
     }
